@@ -1,91 +1,89 @@
-# AI/Machine Learning Intern Challenge: Simple Content-Based Recommendation
+# **Movie Recommendation System**
 
-**Deadline**: Sunday, Feb 23th 11:59 pm PST
-
----
-
-## Overview
-
-Build a **content-based recommendation system** that, given a **short text description** of a user’s preferences, suggests **similar items** (e.g., movies) from a small dataset. This challenge should take about **3 hours**, so keep your solution **simple** yet **functional**.
-
-### Example Use Case
-
-- The user inputs:  
-  *"I love thrilling action movies set in space, with a comedic twist."*  
-- Your system processes this description (query) and compares it to a dataset of items (e.g., movies with their plot summaries or keywords).  
-- You then return the **top 3–5 “closest” matches** to the user.
+This is a **content-based recommendation system** that suggests movies based on a user's input preferences. The system uses **TF-IDF vectorization** and **cosine similarity** to compare the user's description with a dataset of movies and returns the most relevant matches.
 
 ---
 
-## Requirements
-
-1. **Dataset**  
-   - Use a **small** public dataset of items (e.g., a list of movies with plot summaries, or other textual descriptions).  
-   - Make sure the dataset is easy to handle (maybe 100–500 rows) so the solution remains quick to implement and run.  
-   - Include the dataset in your forked repository *or* provide instructions/link on how to download it.  
-
-2. **Approach**  
-   - **Content-Based**: At a minimum, use text similarity to recommend items.  
-     - For instance, you can transform both the user’s text input and each item’s description into TF-IDF vectors and compute **cosine similarity**.  
-   - Return the **top N** similar items (e.g., top 5).
-
-3. **Code Organization**  
-   - You may use a **Jupyter Notebook** or **Python scripts**.  
-   - Keep it **readable** and **modular** (e.g., one section for loading data, one for building vectors, one for computing similarity, etc.).  
-   - Briefly comment or docstring your key functions/sections.
-
-4. **Output**  
-   - When given an input description (e.g., `"I like action movies set in space"`), your system should print or return a list of recommended items (e.g., 3–5 titles).  
-   - Include the similarity score or rank if you’d like.
-
-5. **Summary & Instructions**  
-   - A short `README.md` that includes:
-     - **Dataset**: Where it’s from, any steps to load it.  
-     - **Setup**: Python version, virtual environment instructions, and how to install dependencies (`pip install -r requirements.txt`).  
-     - **Running**: How to run your code (e.g., `python recommend.py "Some user description"` or open your notebook in Jupyter).  
-     - **Results**: A brief example of your system’s output for a sample query.
+## **1. Dataset**
+- The dataset (`data.csv`) contains a list of movies along with their descriptions.
+- Ensure the dataset is available in the same directory as the script.
+- The dataset can be downloaded from Kaggle TMDB 5000 Movie Dataset
 
 ---
 
-## Deliverables
+## **2. Setup Instructions**
+### **Prerequisites**
+Make sure you have Python installed on your system. You can install dependencies using:
 
-1. **Fork the Public Repository**  
-   - **Fork** this repo into your own GitHub account.
+```bash
+pip install -r requirements.txt
+```
 
-2. **Implement Your Solution**  
-   - Load and preprocess your dataset (e.g., read CSV, handle text columns).  
-   - Convert text data to vectors (e.g., TF-IDF).  
-   - Implement a function to compute similarity between the user’s query and each item’s description.  
-   - Return the top matches.
-   - Salary expectation per month (Mandatory)
-
-3. **Short Video Demo**  
-   - In a `.md` file (e.g., `demo.md`) within your fork, paste a link to a **brief screen recording** (video link).  
-   - Demonstrate:
-     - How you run the recommendation code.  
-     - A sample query and the results.
-
-4. **Deadline**  
-   - Submit your fork by **Sunday, Feb 23th 11:59 pm PST**.
-
-> **Note**: This should be doable within ~3 hours. Keep it **straightforward**—you do **not** need advanced neural networks or complex pipelines. A simple TF-IDF + cosine similarity approach is sufficient.
+### **Creating a Virtual Environment (Optional)**
+For best practice, you may want to run this project in a virtual environment:
+```bash
+python -m venv env
+source env/bin/activate   # On macOS/Linux
+env\Scripts\activate      # On Windows
+pip install -r requirements.txt
+```
 
 ---
 
-## Evaluation Criteria
+## **3. Running the Application**
+You can run the application in two ways:
 
-1. **Functionality**  
-   - Does your code run without errors?  
-   - When given an input query, does it successfully output relevant items?
+### **Option 1: Using Streamlit**
+Launch the web-based interface:
+```bash
+streamlit run app.py
+```
 
-2. **Code Quality**  
-   - Clear, commented code (where it counts).  
-   - Logical steps (load data → transform → recommend).
+### **Option 2: Using Command Line**
+If you prefer running the recommendation system from the terminal, you can use:
 
-3. **Clarity**  
-   - Is your `README.md` straightforward about setup, how to run, and what to expect?
+```bash
+python recommend.py "I love thrilling action movies set in space, with a comedic twist."
+```
 
-4. **ML/Recommendation Understanding**  
-   - Basic implementation of a content-based recommendation approach (vectorization, similarity measure).
+---
 
-**We look forward to seeing your solution!** Good luck!
+## **4. How It Works**
+- The user inputs a movie preference.
+- The system converts the text input into a vector using **TF-IDF**.
+- It compares the user input to movie descriptions using **cosine similarity**.
+- The top **5 most similar** movies are displayed along with their posters and links.
+
+---
+
+## **5. Sample Query & Output**
+### **User Input:**
+```plaintext
+"I like action movies set in space with some comedy."
+```
+
+### **Expected Output:**
+| Movie Title            | Poster | Link |
+|------------------------|--------|------|
+| Guardians of the Galaxy | ![Poster](https://image.tmdb.org/t/p/w500/sample1.jpg) | [View](https://www.themoviedb.org/movie/118340) |
+| Star Wars: A New Hope  | ![Poster](https://image.tmdb.org/t/p/w500/sample2.jpg) | [View](https://www.themoviedb.org/movie/11) |
+| Thor: Ragnarok        | ![Poster](https://image.tmdb.org/t/p/w500/sample3.jpg) | [View](https://www.themoviedb.org/movie/284053) |
+
+---
+
+## **6. Dependencies**
+All dependencies are listed in `requirements.txt`. Ensure you install them before running the project.
+
+```plaintext
+streamlit
+scikit-learn
+pandas
+numpy
+requests
+pickle
+```
+
+---
+
+## **7. Credits**
+This project utilizes **The Movie Database (TMDb) API** to fetch movie posters and links.
