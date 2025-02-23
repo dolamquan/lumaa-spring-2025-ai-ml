@@ -77,7 +77,6 @@ scikit-learn
 pandas
 numpy
 requests
-pickle
 ```
 
 ---
