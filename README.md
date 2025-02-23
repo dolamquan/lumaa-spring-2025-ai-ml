@@ -39,13 +39,7 @@ Launch the web-based interface:
 streamlit run app.py
 ```
 
-### **Option 2: Using Command Line**
-If you prefer running the recommendation system from the terminal, you can use:
-
-```bash
-python recommend.py "I love thrilling action movies set in space, with a comedic twist."
-```
-
+### **Option 2: Run within the Jupyter notebook**
 ---
 
 ## **4. How It Works**
